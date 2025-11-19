@@ -1,0 +1,21 @@
+\noindent Query expansion (QE) is a core technique in information retrieval (IR) aimed at improving search accuracy by enhancing the original user query with additional relevant terms. It has evolved significantly since the early days of computer-based search systems.\\
+
+\noindent The concept of query expansion to enhance search effectiveness was first introduced in 1960 by Melvin E. Maron and John L. Kuhns in the paper On Relevance, Probabilistic Indexing and Information Retrieval~\cite{maron1960}.This paper reports on a novel technique for literature indexing and searching in a mechanized library system. It proposed the weighted index tags replacing traditional binary index‑term assignment. It introduced the concept of a "relevance number", computed for each document relative to a query, allowing documents to be ranked probabilistically rather than retrieved via strict Boolean matching~\cite{maron1960}.\\
+
+\noindent Different information retrieval techniques were in rapid development, aimed at determining and retrieving information. The groundwork for effective search started during the 1970s, in which primitive methods like basic keyword matching and manual indexing of information were performed. The concept of Vector Space Model emerged during this time introducing ranked retrieval based on geometric similarity~\cite{rocchio1971}. And later in 1972 the concept of Tf-iDf was introduced to avoid the shortcoming of the vector space model in which term frequency and inverse document frequency is measured and the relevancy of the word is determined~\cite{jones1972}.
+
+
+\begin{center}
+    \textbf{TF-IDF}(t,d) = TF(t,d) × log\(\frac{N}{DF(t)}\)
+\end{center}
+
+
+\noindent Latent Dirichlet Allocation (LDA) was introduced by Blei, Ng and Jordan in 2003 as a probabilistic model for topic modeling~\cite{lda2006}. Latent Dirichlet Allocation (LDA) is a generative model used to discover hidden topics within a collection of documents. It assumes that each document is made up of a mixture of topics, and each topic consists of a set of words that are likely to appear together. Instead of assigning a single topic to a document, LDA allows documents to contain multiple topics in different proportions. LDA uses two Dirichlet distributions: one at the document level to represent the distribution of topics in a document, and another at the topic level to represent the distribution of words within each topic. By analyzing patterns of word usage across the text, LDA estimates the probability distributions that best explain how the words and topics are organized. This makes it a powerful and flexible method for understanding the underlying themes and structure in large text datasets.\\ \\
+
+
+
+\noindent Latent Semantic Indexing (LSI), also known as Latent Semantic Analysis (LSA), is another influential technique in the field of information retrieval that emerged in the late 1980s. LSI aims to improve search accuracy by capturing the hidden relationships between terms and documents through dimensionality reduction. It uses a mathematical technique called Singular Value Decomposition (SVD) to reduce the large term-document matrix into a lower-dimensional space, where semantically similar terms and documents are mapped closer together~\cite{lsa2023}. It decomposes the matrix into three new matrices: the singular value matrix, the words matrix, and the documents matrix~\cite{borade2022}. By using LSA, we can calculate the similarity between words or documents based on the cosine distance between their representation vectors in latent space. LSA allows us to find words that have similar meanings or documents that have similar topics based on the similarity of semantic patterns found through SVD decomposition~\cite{lsa2023}.
+
+
+
+

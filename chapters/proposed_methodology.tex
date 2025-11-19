@@ -1,0 +1,81 @@
+\subsection{Software Development Life Cycle (SDLC) }
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Figures/Sprint.png}
+    \caption{Agile Process}
+    \label{fig:Component Diagram}
+\end{figure}
+
+\noindent This project follows the Agile Software Development Life Cycle (SDLC) with a focus on the Scrum framework, ensuring iterative development, regular feedback, and adaptability to changing requirements. The methodology supports the dynamic nature of Natural Language Processing (NLP)-based systems, such as our Modular Query Refinement Tool.
+
+\begin{enumerate}
+
+    \item \textbf{Sprint 1: Setup and Initial Modules (Weeks 1–2)} \\
+    \noindent The first sprint focused on setting up the development infrastructure and building a functional pipeline for user interaction. The frontend was developed to handle basic user input through a search bar, which connects to a REST API implemented in the backend. Meanwhile, work began on the NLP side with the identification and selection of a medical QnA dataset. Several preprocessing experiments were conducted to determine the best method for keyword extraction, particularly by extracting keywords from the answer part of the dataset.\\
+    Key tasks:
+    \begin{itemize}
+        \item Build a basic frontend UI that accepts user queries.
+        \item  Implement a functional REST API for backend communication.
+        \item Select and finalize a medical QnA dataset. 
+        \item Test and compare three approaches for extracting keywords from answers.     
+        \item Begin structuring dataset into input-question → output-keywords format.
+    \end{itemize}
+    
+    \newpage
+    \noindent \item \textbf {Sprint 2:Dataset Finalization and Midterm Preparation (Weeks 3-4)} \\
+    This phase centers around completing the preprocessing pipeline and preparing training data for the LDA model. Based on the experiments conducted in the first sprint, a final keyword extraction strategy will be selected. The focus is to complete a working dataset and demonstrate a functional pipeline during the midterm review. Additionally, the frontend and backend integration will be refined, and architectural documentation will be prepared for the midterm presentation.\\
+    Key tasks:
+    
+    \begin{itemize}
+     \item Finalize the keyword extraction approach and generate full training dataset.
+     \item Polish REST API interactions and ensure proper data flow.
+     \item  Prepare and document the overall system architecture.
+     \item  Demonstrate data flow from query to structured format with sample outputs.
+     \item  Prepare midterm deliverables: code walkthrough, diagrams, and demo-ready UI.
+    \end{itemize}
+    
+    
+     \noindent \item \textbf {Sprint 3:Model Training and Integration (Weeks 5–6)} \\
+    This sprint focuses on training different models using the structured dataset created in Sprint 2. Once trained, the model will be wrapped and exposed via the backend for real-time inference. Backend logic will be updated to include keyword generation, and frontend integration will be enhanced to display model outputs. This sprint also involves testing model accuracy using internal validation techniques and ensuring modularity in model deployment.\\
+    Key tasks:
+    \begin{itemize}
+    
+        \item   Train different models on the prepared keyword dataset.
+        \item Create a model inference pipeline and integrate it with the backend.
+        \item Refactor backend code to include model response handling.
+        \item Update the frontend to display model-generated keywords or suggestions.
+        \item Perform internal evaluations on model performance.
+    \end{itemize}
+
+    \newpage
+     \noindent \item \textbf{Sprint 4:UI Enhancement, Testing, and Finalization (Weeks 7–8)} \\
+    The final sprint is dedicated to polishing the frontend UI and ensuring complete system integration. User experience will be improved with a cleaner design and better interactivity. Rigorous testing will be performed on all components to prepare for the final demo. Additionally, documentation and the project report will be compiled, covering methodology, experiments, results, and system design.\\
+    Key tasks:
+    \begin{itemize}
+        \item  Enhance the frontend UI for better visual appeal and usability.
+        \item Conduct system-wide integration tests and resolve bugs.
+        \item Finalize the backend-model integration and response formats.
+        \item Write the final project report and prepare presentation material.
+        \item Ensure the system is demo-ready with backup workflows if needed.
+    
+    \end{itemize}  
+\end{enumerate}
+
+
+\subsection{Tools and Technique}
+\begin{itemize}
+    \item \textbf{Frontend:}\\ 
+    \noindent The frontend of the system was developed using Nuxt.js, a powerful Vue.js framework for building modern web applications. It allows seamless integration with RESTful APIs for submitting user queries and displaying refined results in real time. Tailwind CSS was used for styling the interface, enabling a clean and responsive design system with utility-first classes. The combination of Nuxt.js and Tailwind ensured both maintainability and performance across different devices.
+   
+   \item \textbf{Backend(Django):}\\
+   \noindent The backend of the system was developed using Django, a high-level Python web framework. Django REST Framework (DRF) was used to build the API endpoints that connected the frontend to the keyword extraction and query refinement logic. Its modularity allowed for easy extension and integration with the machine learning components.
+   
+   \item \textbf{Natural Language Processing (NLP) Libraries):}\\
+   \noindent For core text preprocessing, libraries like NLTK and spaCy were used. These tools handled essential tasks such as tokenization, lemmatization, removal of stopwords, and part-of-speech tagging. Such preprocessing steps were necessary to prepare the raw medical dataset for effective keyword extraction and topic modeling.
+    \\ \\ 
+    \item \textbf{Latent Dirichlet Allocation (LDA)}:\\
+    \noindent LDA was used as one of the primary topic modeling techniques in the project. It identifies latent topics within a corpus by estimating word-topic and topic-document distributions. Implemented using the Gensim library, LDA helped group related medical terms and phrases, making it easier to interpret user queries in a domain-specific context. The model's performance was evaluated using coherence scores to determine the most meaningful topic structure.
+    \item \textbf{Latent Semantic Indexing (LSI)}:\\
+    \noindent LSI was also used for topic modeling but relied on Singular Value Decomposition  applied to a TF-IDF matrix. Unlike LDA, which is probabilistic, LSI is based on linear algebra and helps capture latent semantic relationships between terms and documents. Although slightly less interpretable than LDA, LSI provided valuable insights when combined with statistical term weighting.
+\end{itemize}
+  

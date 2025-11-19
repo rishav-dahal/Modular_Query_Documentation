@@ -1,0 +1,20 @@
+\subsection*{All four Models }
+
+\noindent \textbf{Query} = "pain in urinary track" \\
+\noindent The four algorithms LDA, LDA with verb filtering, LSI with TF-IDF, and BERT demonstrated varying capabilities in interpreting the query "I have pain in urinary tract." LDA produced a broad set of medically related keywords, but often included loosely connected terms, indicating limited contextual understanding. LDA with verb filtering slightly improved the relevance by focusing more on nouns, reducing noise and capturing more domain-specific keywords like "infection" and "bladder." LSI with TF-IDF emphasized statistically significant terms such as "diagnosis," "clinical," and "tumor," showing its strength in identifying structured, document-level associations. BERT, however, provided the most semantically coherent and context-aware results, accurately linking "urinary," "stone," "dialysis," and "disease" in a way that closely aligns with the intent and medical context of the original query. This comparison highlights how deep learning models like BERT excel in capturing nuanced meanings, especially in domain-specific or symptom-based queries. \\ \\
+
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.4} % Increases row height
+\begin{tabular}{| p{3.5cm} | p{3.5cm} | p{3.5cm} | p{3.5cm} |}
+  \hline
+  \textbf{LDA} & \textbf{LDA with Verb} & \textbf{LSI with TF-IDF} & \textbf{BERT} \\
+  \hline
+  kidney, urine, bladder, urinary, eye, tract, urethra, stone, blood, vision 
+  & symptom, cause, infection, child, disease, pain, people, diarrhea, intestine, tract 
+  & cancer, resource, blood, management, trial, clinical, diagnosis, registry, tumor, heart 
+  & kidney, urine, bladder, blood, urinary, stone, cause, disease, tract, dialysis \\
+  \hline
+\end{tabular}
+\caption{Topic keywords extracted by different models}
+\end{table}

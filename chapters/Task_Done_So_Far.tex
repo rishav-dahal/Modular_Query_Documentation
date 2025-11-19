@@ -1,0 +1,16 @@
+\begin{itemize}
+    \item \textbf{Frontend:}\\ 
+    \noindent The frontend of the system was developed using Nuxt.js, a powerful Vue.js framework for building modern web applications. It allows seamless integration with RESTful APIs for submitting user queries and displaying refined results in real time. Tailwind CSS was used for styling the interface, enabling a clean and responsive design system with utility-first classes. The combination of Nuxt.js and Tailwind ensured both maintainability and performance across different devices.
+   \\
+   \item \textbf{Backend(Django):}\\
+   \noindent The backend of the system was developed using Django, a high-level Python web framework. Django REST Framework (DRF) was used to build the API endpoints that connected the frontend to the keyword extraction and query refinement logic. Its modularity allowed for easy extension and integration with the machine learning components.
+   \\
+   \item \textbf{Natural Language Processing (NLP) Libraries):}\\
+   \noindent For core text preprocessing, libraries like NLTK and spaCy were used. These tools handled essential tasks such as tokenization, lemmatization, removal of stopwords, and part-of-speech tagging. Such preprocessing steps were necessary to prepare the raw medical dataset for effective keyword extraction and topic modeling.
+    \\
+    \item \textbf{Latent Dirichlet Allocation (LDA)}:\\
+    \noindent LDA was used as one of the primary topic modeling techniques in the project. It identifies latent topics within a corpus by estimating word-topic and topic-document distributions. Implemented using the Gensim library, LDA helped group related medical terms and phrases, making it easier to interpret user queries in a domain-specific context. The model's performance was evaluated using coherence scores to determine the most meaningful topic structure.\\
+    \item \textbf{Latent Semantic Indexing (LSI)}:\\
+    \noindent LSI was also used for topic modeling but relied on Singular Value Decomposition  applied to a TF-IDF matrix. Unlike LDA, which is probabilistic, LSI is based on linear algebra and helps capture latent semantic relationships between terms and documents. Although slightly less interpretable than LDA, LSI provided valuable insights when combined with statistical term weighting.
+\end{itemize}
+  

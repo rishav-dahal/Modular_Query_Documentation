@@ -1,0 +1,197 @@
+\noindent In our study, we explored four different methods to extract topics from the MedQuAD QnA dataset. Among these, we primarily focused on two approaches that yielded the most interpretable and coherent results:
+    \begin{enumerate}
+        \item Training an LDA Model with Coherence Values.
+        \item Training an LSI Model with TF-IDF.
+    \end{enumerate}
+    
+\subsection{LDA Model with Coherence Values}
+
+\noindent This approach aimed to find the optimal number of topics by measuring \textbf{coherence scores}—an evaluation metric that indicates how semantically interpretable the generated topics are.
+
+\subsubsection{Dataset Preparation}
+
+\noindent We used the \textbf{MedQuAD QnA dataset} and created a new column by concatenating each question with its corresponding answer. From this combined column, we generated a dictionary and corpus using the \textit{Bag-of-Words (BoW)} method. This corpus was then used to train multiple \textbf{LDA (Latent Dirichlet Allocation)} models by varying the number of topics from 5 to 50.
+
+\newpage
+\subsubsection{Coherence Score Analysis}
+
+\noindent For each model, we computed the \textbf{coherence score} to determine the quality of the topics. The relationship between the number of topics and the coherence values is shown in the graph below:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Figures/v1 - LDA with ADJ & Coherence/CoherenceVsTopic.png} 
+    \caption{Coherence Score vs. Number of Topics}
+    \label{fig:coherence-plot}
+\end{figure}
+
+\noindent Figure \ref{fig:coherence-plot} shows that the optimal number of topics selection as \textbf{10}, where the coherence value peaked. We then used the model trained with 10 topics for further analysis.
+
+\newpage
+\subsubsection{Topic Interpretation}
+
+\noindent The generated topics from the best LDA model are shown below:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures/v1 - LDA with ADJ & Coherence/Topic00-LDA.png}
+    \caption{Topic00-LDA}
+    \label{fig:lda-topics}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures/v1 - LDA with ADJ & Coherence/Topic01-LDA.png}
+    \caption{Topic01-LDA}
+    \label{fig:lda-topics}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures/v1 - LDA with ADJ & Coherence/Topic02-LDA.png}
+    \caption{Topic02-LDA}
+    \label{fig:lda-topics}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures/v1 - LDA with ADJ & Coherence/Topic03-LDA.png}
+    \caption{Topic03-LDA}
+    \label{fig:lda-topics}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures/v1 - LDA with ADJ & Coherence/Topic04-LDA.png}
+    \caption{Topic04-LDA}
+    \label{fig:lda-topics}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures/v1 - LDA with ADJ & Coherence/Topic05-LDA.png}
+    \caption{Topic05-LDA}
+    \label{fig:lda-topics}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures/v1 - LDA with ADJ & Coherence/Topic06-LDA.png}
+    \caption{Topic06-LDA}
+    \label{fig:lda-topics}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures/v1 - LDA with ADJ & Coherence/Topic07-LDA.png}
+    \caption{Topic07-LDA}
+    \label{fig:lda-topics}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures/v1 - LDA with ADJ & Coherence/Topic08-LDA.png}
+    \caption{Topic08-LDA}
+    \label{fig:lda-topics}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures/v1 - LDA with ADJ & Coherence/Topic09-LDA.png}
+    \caption{Topic09-LDA}
+    \label{fig:lda-topics}
+\end{figure}
+
+\noindent These topics covered a wide range of medical themes and showed high interpretability upon manual inspection.
+
+\newpage
+\subsubsection{Example Query}
+
+\noindent To illustrate how the model responds to user queries, we provide the following example:
+
+\begin{itemize}
+    \item \textbf{Query:} \textit{"pain in urinary tract"}
+    \item \textbf{Generated Tokens:} [symptom, cause, infection, child, disease, pain, people, diarrhea, intestine, track]
+\end{itemize}
+
+\noindent The model then outputs the topic distribution for the query as shown below:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{Figures/v1 - LDA with ADJ & Coherence/TopicDistributionForQuery.png}
+    \caption{Topic Distribution for Sample Query}
+    \label{fig:query-distribution}
+\end{figure}
+
+
+
+
+\newpage
+\subsection{LSI Model with TF-IDF}
+
+\noindent In contrast to LDA, the \textbf{Latent Semantic Indexing (LSI)} model uses a \textbf{TF-IDF} representation instead of Bag-of-Words (BoW). The same preprocessed corpus was used, but the focus here was on dimensionality reduction and identifying latent topics through \textit{Singular Value Decomposition (SVD)}.
+
+\noindent We trained LSI models for different numbers of topics and evaluated them using the same coherence metric. The highest coherence score was achieved with \textbf{5 topics}, indicating that the optimal representation in the LSI space had fewer dimensions compared to the LDA model.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Figures/v2 - LSI with tf-idf/CoherenceVSTopic.png}
+    \caption{Coherence Score vs. Number of Topics for LSI}
+    \label{fig:lsi-coherence}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures/v2 - LSI with tf-idf/Topic00-LSI.png}
+    \caption{Topic00-LSI}
+    \label{fig:lsi-topics}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures/v2 - LSI with tf-idf/Topic01-LSI.png}
+    \caption{Topic01-LSI}
+    \label{fig:lsi-topics}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures/v2 - LSI with tf-idf/Topic02-LSI.png}
+    \caption{Topic02-LSI}
+    \label{fig:lsi-topics}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures/v2 - LSI with tf-idf/Topic03-LSI.png}
+    \caption{Topic03-LSI}
+    \label{fig:lsi-topics}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures/v2 - LSI with tf-idf/Topic04-LSI.png}
+    \caption{Topic04-LSI}
+    \label{fig:lsi-topics}
+\end{figure}
+
+
+\noindent While LSI performed reasonably well, the topics were slightly more abstract and less interpretable compared to LDA. This suggests that LDA may be more suitable for tasks requiring fine-grained semantic separation.
+
+\newpage
+\subsubsection{Example Query}
+
+\noindent To illustrate how the model responds to user queries, we provide the following example:
+
+\begin{itemize}
+    \item \textbf{Query:} \textit{"pain in urinary tract"}
+    \item \textbf{Generated Tokens:} [cancer, resource, blood, management, trail, clinical, diagno-sis, registtry, tumor, heart]
+\end{itemize}
+
+\noindent The model then outputs the topic distribution for the query as shown below:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{Figures/v2 - LSI with tf-idf/Topic_Distribution_For_Query.png}
+    \caption{Topic Distribution for Sample Query}
+    \label{fig:query-distribution}
+\end{figure}

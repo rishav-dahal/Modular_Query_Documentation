@@ -1,0 +1,227 @@
+\documentclass[12pt,a4paper]{article}
+
+%\usepackage{times}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{times}
+\usepackage[hidelinks]{hyperref}
+\usepackage{amsmath}
+\usepackage{anyfontsize}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{indentfirst}
+\usepackage{pgfgantt}
+\usepackage{float}
+\usepackage{appendix}
+\usepackage{listings}  % For code listings
+\usepackage{xcolor}    % For syntax highlighting
+\usepackage{booktabs} 
+
+% Define colors
+\definecolor{lightgray}{rgb}{0.95,0.95,0.95}
+\definecolor{darkgray}{rgb}{0.4,0.4,0.4}
+\definecolor{purple}{rgb}{0.5,0,0.5}
+\definecolor{numb}{rgb}{0.5,0.5,0.5}
+\definecolor{punct}{rgb}{0.5,0.5,0.5}      % punctuation color
+\definecolor{delim}{rgb}{0.3,0.3,0.3}     % delimiter color
+
+% JSON language definition
+\lstdefinelanguage{json}{
+    basicstyle=\normalfont\ttfamily,
+    commentstyle=\color{gray}\textit,
+    stringstyle=\color{red},
+    showstringspaces=false,
+    breaklines=true,
+    frame=lines,
+    backgroundcolor=\color{lightgray},
+    numbers=left,
+    numberstyle=\tiny,
+    numbersep=5pt,
+    literate=
+     *{0}{{{\color{numb}0}}}{1}
+      {1}{{{\color{numb}1}}}{1}
+      {2}{{{\color{numb}2}}}{1}
+      {3}{{{\color{numb}3}}}{1}
+      {4}{{{\color{numb}4}}}{1}
+      {5}{{{\color{numb}5}}}{1}
+      {6}{{{\color{numb}6}}}{1}
+      {7}{{{\color{numb}7}}}{1}
+      {8}{{{\color{numb}8}}}{1}
+      {9}{{{\color{numb}9}}}{1}
+      {:}{{{\color{punct}{:}}}}{1}
+      {,}{{{\color{punct}{,}}}}{1}
+      {\{}{{{\color{delim}{\{}}}}{1}
+      {\}}{{{\color{delim}{\}}}}}{1}
+      {[}{{{\color{delim}{[}}}}{1}
+      {]}{{{\color{delim}{]}}}}{1},
+}
+
+% Bash language definition
+\lstdefinelanguage{bash}{
+    basicstyle=\normalfont\ttfamily,
+    backgroundcolor=\color{lightgray},
+    breaklines=true,
+    frame=lines,
+    numbers=left,
+    numberstyle=\tiny,
+    numbersep=5pt
+}
+
+% General listings settings
+\lstset{
+    basicstyle=\footnotesize\ttfamily,
+    breaklines=true,
+    frame=single,
+    xleftmargin=15pt,
+    xrightmargin=15pt
+}
+
+
+
+\usepackage[backend=biber,style=numeric,sorting=none]{biblatex} % <-- updated
+\addbibresource{ref.bib} % <-- your .bib file
+
+\linespread{1.5}
+
+\geometry{
+    margin=1in,
+    bindingoffset=0.0in
+}
+
+\providecommand{\keywords}[1]
+{
+  \small	
+  \textbf{\textit{Keywords---}} #1
+}
+
+\title{A Major Project Report on \\ \textbf{Modular Query Refinement Using Latent Dirichlet Allocation}}
+
+\author{
+    Submitted in Partial Fulfillment of the Requirements for the Degree of\\
+    \textbf{Bachelor of Engineering in Software Engineering} \\ under Pokhara University\vspace{.5in}
+    \\Submitted by:\\
+    \textbf{Binit Bikram KC, 201610}\\
+    \textbf{Dhiraj Poudel, 201612}\\
+    \textbf{Rishav Dahal, 201629}\\
+    \textbf{Sandhya Gotame, 201637}
+}
+\date{26 July 2025}
+\begin{document}
+\maketitle
+\thispagestyle{empty}  % No page number on title page
+
+% Supervisor info, placed after \maketitle
+\begin{center}
+    \textbf{Under the supervision of:}\\
+    \textbf{Mr. Ashim Khadka}\\
+\end{center}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/NCITlogo.PNG}
+\end{figure}
+
+
+\newpage
+\thispagestyle{empty} 
+\input{chapters/collegelatterhead.tex}
+
+\newpage
+\pagenumbering{Roman}
+\setcounter{page}{1}
+\section*{Acknowledgment }
+\input{chapters/acknowledgment}
+
+\newpage
+\addcontentsline{toc}{section}{\numberline{}Abstract}
+\section*{Abstract}
+\input{chapters/abstract}
+
+\newpage
+\tableofcontents
+
+\clearpage
+\phantomsection
+\addcontentsline{toc}{section}{\numberline{}List of Figures}
+\listoffigures
+
+\clearpage
+\newpage
+\phantomsection
+\addcontentsline{toc}{section}{\numberline{}List of Tables}
+\listoftables
+
+
+\newpage
+\pagenumbering{arabic}  % Switch to Arabic numerals
+
+\section{Introduction}
+\input{chapters/Introduction}
+
+\newpage
+\section{Problem Statement}
+\input{chapters/Problem_Statement}
+
+\newpage
+\section{Project Objectives}
+\input{chapters/problem_objective}
+
+\newpage
+\section{Significance of the Study}
+\input{chapters/Significance}
+
+\newpage
+\section{Scope and Limitations}
+\input{chapters/Scope_and_Limitations}
+
+\newpage
+\section{Literature Review}
+\input{chapters/Literature_review}
+
+\newpage
+\section{Methodology}
+\input{chapters/proposed_methodology}
+
+\newpage
+\section{System Model and UML Diagram}
+\input{chapters/system_model_and_Uml_diagram}
+
+% \newpage 
+% \section{Tools and Techniques used}
+% \input{chapters/Task_Done_So_Far}
+
+\newpage
+\section{Performance Evaluation }
+\input{chapters/performance_evaluation}
+
+\newpage
+\section{Results and Discussion}
+\input{chapters/Result_And_Discussion}
+
+
+\newpage
+\section{Project Task and Time schedule}
+The distribution of project tasks, their scheduling , and the  assignment of responsibilities among team members can be depicted through the utilization  of the subswquent table and Gantt chart
+\input{chapters/Project_task_time_schedule}
+
+\newpage
+\section{Conclusion}
+\input{chapters/Conclusion}
+
+\newpage
+\section{Futher Works}
+\input{chapters/Futher works}
+
+
+\newpage
+\thispagestyle{empty}
+\addcontentsline{toc}{section}{References}
+\printbibliography % <-- changed from \bibliography{ref}
+
+\newpage
+\section{Appendix}
+\input{chapters/appendix}
+
+\end{document}

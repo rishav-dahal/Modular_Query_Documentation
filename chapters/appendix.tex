@@ -1,0 +1,102 @@
+\subsection{Query Submission Endpoint}
+\label{subsec:query-submission}
+
+\begin{itemize}
+    \item \textbf{Base URL}: \texttt{http://127.0.0.1:8000/query/submit/}
+    \item \textbf{Method}: POST
+    \item \textbf{Description}: Processes natural language queries about medical symptoms and returns relevant keywords using different analysis methods.
+\end{itemize}
+
+\subsubsection*{Request}
+
+\textbf{Headers}:
+\begin{itemize}
+    \item \texttt{Content-Type: application/json}
+\end{itemize}
+
+\textbf{Body Parameters}:
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|l|l|p{7cm}|}
+        \hline
+        \textbf{Parameter} & \textbf{Type} & \textbf{Required} & \textbf{Description} \\
+        \hline
+        query & string & Yes & The natural language query to analyze \\
+        \hline
+        flag & string & Yes & The analysis method to use (see below) \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\textbf{Available Flags}:
+\begin{itemize}
+    \item \texttt{BERT}: Returns a simple list of relevant keywords
+    \item \texttt{LSA}: Returns keywords with Latent Semantic Analysis scores
+    \item \texttt{UDA\_VERB}: Returns keywords with verb-focused analysis scores
+    \item \texttt{IDA}: Returns keywords with disease-focused analysis scores
+\end{itemize}
+
+\subsubsection*{Responses}
+
+\textbf{Success Response (200 OK)}:
+\begin{itemize}
+    \item Returns a JSON object with relevant keywords, formatted differently based on the flag.
+\end{itemize}
+
+\newpage
+\textbf{Response Examples}:
+\begin{lstlisting}[language=json,caption=BERT Response,backgroundcolor=\color{lightgray!10},basicstyle=\footnotesize\ttfamily]
+{
+  "keywords": ["kidney", "urine", "bladder", "blood", "urinary", 
+               "stone", "cause", "disease", "tract", "dialysis"]
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=json,caption=LSA Response,backgroundcolor=\color{lightgray!10},basicstyle=\footnotesize\ttfamily]
+{
+  "keywords": [
+    ["cancer", -0.29708316497052915],
+    ["resource", 0.18949593917846497],
+    ["blood", -0.18168937312646596],
+    ["management", 0.17981053252474121],
+    ["trial", -0.17238994533412967]
+  ]
+}
+\end{lstlisting}
+
+\textbf{Error Responses}:
+\begin{itemize}
+    \item \texttt{400 Bad Request}: Invalid or missing parameters
+    \item \texttt{500 Internal Server Error}: Server-side processing error
+\end{itemize}
+
+\subsubsection*{Example Requests}
+
+\begin{lstlisting}[language=bash,caption=BERT Example,backgroundcolor=\color{lightgray!10},basicstyle=\footnotesize\ttfamily]
+curl -X POST http://127.0.0.1:8000/query/submit/ \
+  -H "Content-Type: application/json" \
+  -d '{"query":"pain in urinary tract", "flag":"BERT"}'
+\end{lstlisting}
+
+\subsection{Snapsorts of frontend}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.1\textwidth]{Figures/Frontend Snapshot/s1.png}
+    \caption{Landing Page}
+    \label{fig:System sequence Diagram}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.1\textwidth]{Figures/Frontend Snapshot/s2.png}
+    \caption{Query Submit}
+    \label{fig:System sequence Diagram}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.1\textwidth]{Figures/Frontend Snapshot/s3.png}
+    \caption{Generated Keywords}
+    \label{fig:System sequence Diagram}
+\end{figure}
